@@ -1,0 +1,18 @@
+module.exports = [{
+  id: 'AR-BA-LOCAL-JURISDICTION-REVIEW',
+  country: 'AR', province: 'Buenos Aires', municipality: null,
+  activityType: 'oficina',
+  title: 'Revisión de normativa provincial y municipal aplicable',
+  source: 'Provincia de Buenos Aires — sistema normativo y autoridad laboral',
+  sourceSection: 'Normativa provincial y ordenanzas del municipio declarado',
+  summary: 'Exige identificar y revisar disposiciones provinciales y municipales vigentes antes de concluir la evaluación. Esta versión no presume requisitos locales no cargados.',
+  validationType: 'manual',
+  severity: 'critical',
+  requiresProfessionalReview: true,
+  effectiveFrom: null,
+  effectiveTo: null,
+  sourceUrl: 'https://normas.gba.gob.ar/',
+  checkedAt: '2026-08-07',
+  ruleVersion: '1.0.0',
+  requiredInputs: [],
+}];
