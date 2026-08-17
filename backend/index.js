@@ -7,7 +7,9 @@ const application = require('./src/app');
 const app = express();
 let connectionPromise;
 
-app.use(async (_req, _res, next) => {
+app.use(async (req, _res, next) => {
+  if (req.method === 'OPTIONS' || req.path === '/api/health') return next();
+
   try {
     connectionPromise ||= connectDB();
     await connectionPromise;
