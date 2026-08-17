@@ -76,12 +76,14 @@ const shutdown = (signal) => {
   setTimeout(() => process.exit(1), 10000).unref();
 };
 
-process.on('SIGTERM', () => shutdown('SIGTERM'));
-process.on('SIGINT', () => shutdown('SIGINT'));
+if (process.env.VERCEL !== '1') {
+  process.on('SIGTERM', () => shutdown('SIGTERM'));
+  process.on('SIGINT', () => shutdown('SIGINT'));
 
-start().catch((error) => {
-  console.error('No se pudo iniciar el servidor:', error.message);
-  process.exit(1);
-});
+  start().catch((error) => {
+    console.error('No se pudo iniciar el servidor:', error.message);
+    process.exit(1);
+  });
+}
 
 module.exports = app;
