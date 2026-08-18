@@ -168,6 +168,20 @@ cd backend && npm test
 cd ../frontend && npm run build
 ```
 
+## Despliegue en Vercel
+
+La aplicación se despliega desde este monorepo como dos proyectos de Vercel y usa MongoDB Atlas:
+
+1. Creá el proyecto de backend con `backend` como **Root Directory**.
+2. Configurá `MONGODB_URI`, `JWT_SECRET`, `JWT_EXPIRES_IN=7d`, `NODE_ENV=production`,
+   `COOKIE_SECURE=true`, `TRUST_PROXY=true` y `CORS_ORIGINS` con la URL del frontend.
+3. Opcionalmente configurá `OPENAI_API_KEY` y `OPENAI_MODEL` para habilitar las funciones de IA.
+4. Creá el proyecto de frontend con `frontend` como **Root Directory**.
+5. Configurá `VITE_API_URL` con la URL del backend seguida de `/api`, y volvé a desplegar.
+
+El `vercel.json` del frontend conserva las rutas de la SPA y Vercel detecta el entrypoint
+Express del backend de forma nativa. Docker Compose continúa disponible para desarrollo local o VPS.
+
 La arquitectura y el contrato del botón **Analizar con IA** están documentados en [docs/AI_BUILDING_ANALYSIS.md](docs/AI_BUILDING_ANALYSIS.md).
 
 El ciclo de vista previa, edición, rechazo y aceptación de la propuesta está documentado en [docs/AI_EVACUATION_PROPOSAL.md](docs/AI_EVACUATION_PROPOSAL.md).
